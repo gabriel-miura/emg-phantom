@@ -7,6 +7,7 @@ Siga os passos abaixo para configurar o ambiente e processar os sinais de EMG.
 ## 1. Pré-requisitos
 - Python 3.11.9: Certifique-se de ter esta versão instalada (disponível em [https://www.python.org/downloads/release/python-3119/](https://www.python.org/downloads/release/python-3119/)).
 - Hardware: Microcontrolador Raspberry Pi Pico 2W.
+OBS.: Irá aparecer uma mensagem destacada no link de instalação desta versão do python: ```Note: Python 3.11.9 has been superseded by Python 3.11.15```. Pode ignorar, já que a versão 3.11.9 é estável e seguira, cujo motivo de uso é a estabilidade. Instale a versão 3.11.9.
 
 ## 2. Instalação de Dependências
 No terminal, instale as bibliotecas necessárias para o projeto:

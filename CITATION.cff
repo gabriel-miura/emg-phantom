@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Se você usar este software, por favor cite-o como abaixo."
+authors:
+- family-names: "Miura"
+  given-names: "Gabriel Hideaki"
+  orcid: "https://orcid.org/0009-0002-7034-7512"
+title: "emg-phantom"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2026-03-28
+url: "https://github.com/gabriel-miura/emg-phantom"

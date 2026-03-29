@@ -11,7 +11,7 @@ Siga os passos abaixo para configurar o ambiente e processar os sinais de EMG.
 ## 2. Instalação de Dependências
 No terminal, instale as bibliotecas necessárias para o projeto:
 ```bash
-pip install numpy scipy pandas matplotlib tensorflow scikit-learn
+pip install pandas pyserial matplotlib numpy tensorflow joblib scikit-learn scipy seaborn statsmodels jupyter ipykernel
 ```
 
 ## 3. Execução do Projeto

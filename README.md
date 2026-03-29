@@ -61,6 +61,14 @@ def build_model(input_length, n_classes):
     return model
 ```
 
+Caso seja necessário alterar as entradas ou saídas do modelo, modifique os parâmetros abaixo. Edita-se abaixo e não no código do modelo pois o código acima apresenta a estrutura geral, a arquitetura como um molde, cujos tamanhos da entrada e saída são, dessa forma, baseadas na divisão de dados, portanto precisamoes mexer tanto no modelo quanto na divisão. Isso é feito apenas alterando estes parâmetros que o código ajusta automaticamente. 
+```python
+# CONFIGURAÇÃO DO MODELO
+N_CLUSTERS = 2 # número de tipos de movimentos realizados durante a gravação (mão aberta e mão fechada). SERVE TAMANHO DA DAÍDA OU QUANTIDADE DE SAÍDAS
+WINDOW_SIZE_MS = 150 # tamanho da entrada do modelo em milissegundos do sinal. SERVE COMO TAMANHO DA ENTRADA
+```
+OBS.: O ```WINDOW_SIZE_MS``` apresenta o tamanho da janela de sinal que ele usará para processamento em tempo real do movimento realizado em MILISSEGUNDOS. A conversão para a quantidade de pontos, taxa de amostragem e demais valores é feita automaticamente pelo código ao extrair os valores de TIMESTAMP registrados durante a gravação, portanto ajuste apenas o tamanho em MILISSEGUNDOS. Exemplo: para um sinal de taxa de amostragem (FS) desconhecida e queremos extrair 150ms de janela, a FS é obtida em função do poder de processamento do microcontrolador Raspberry Pi Pico 2W, então se o cálculo retornar uma FS=830Hz, o tamanho da janela em pontos é obtida realizando uma regra de três, cujo resultado é 124 pontos.
+
 A última parte 3_SUPERVISORIO.py é o código do 1_DADOS.py adaptado para utilizar o modelo para classificação em tempo real com os dados envidados pelo Raspberry Pi Pico 2W.
 ```python
 # FUNÇÃO DE CARREGAMENTO DO MODELO SALVO E OTIMIZADO PARA TFLITE
@@ -80,16 +88,6 @@ def load_tflite(model_path):
         return output_data
     return predict_function
 ```
-
-4. Configuração da Execução
-Navegue até 2_TREINO.ipynb e ajuste os parâmetros conforme sua necessidade:
-
-```python
-# CONFIGURAÇÃO
-N_CLUSTERS = 2 # número de tipos de movimentos realizados durante a gravação (mão aberta e mão fechada)
-WINDOW_SIZE_MS = 150 # tamanho da entrada do modelo em milissegundos do sinal
-```
-OBS.: O ```WINDOW_SIZE_MS``` apresenta o tamanho da janela de sinal que ele usará para processamento em tempo real do movimento realizado em MILISSEGUNDOS. A conversão para a quantidade de pontos, taxa de amostragem e demais valores é feita automaticamente pelo código ao extrair os valores de TIMESTAMP registrados durante a gravação, portanto ajuste apenas o tamanho em MILISSEGUNDOS. Exemplo: para um sinal de taxa de amostragem (FS) desconhecida e queremos extrair 150ms de janela, a FS é obtida em função do poder de processamento do microcontrolador Raspberry Pi Pico 2W, então se o cálculo retornar uma FS=830Hz, o tamanho da janela em pontos é obtida realizando uma regra de três, cujo resultado é 124 pontos.
 
 # Termos de Uso e Atribuição
 **Este projeto está sob a licença Apache 2.0. É obrigatório incluir o nome do autor original (Gabriel Hideaki Miura) nos seguintes campos:**

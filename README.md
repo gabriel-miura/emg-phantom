@@ -12,7 +12,7 @@ OBS.: Irá aparecer uma mensagem destacada no link de instalação desta versão
 ## 2. Instalação de Dependências
 No terminal, instale as bibliotecas necessárias para o projeto:
 ```bash
-pip install pandas pyserial matplotlib numpy tensorflow joblib scikit-learn scipy seaborn statsmodels jupyter ipykernel
+pip install pandas pyserial matplotlib numpy==1.26.4 tensorflow==2.19.1 joblib scikit-learn scipy seaborn statsmodels jupyter ipykernel
 ```
 
 ## 3. Execução do Projeto

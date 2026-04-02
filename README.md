@@ -1,19 +1,26 @@
 # Classificação de Sinais de Eletromiografia de Superfície via Arquitetura Híbrida CNN-LSTM e Aprendizado Semi-Supervisionado Baseado em LGMM
-Software de Inteligência Artificial de Redes Neurais Artificiais do tipo CNN-LSTM para classificação de sinais de superfície de eletromiografia por meio de aprendizado semi-supervisionado por Laplace-Gaussian Mixture Models (LGMM).
+Software de Inteligência Artificial de Redes Neurais Artificiais do tipo CNN-LSTM para classificação de sinais de superfície de eletromiografia por meio de aprendizado semi-supervisionado por Laplace-Gaussian Mixture Models (LGMM). O framework destaca-se pela alta capacidade de generalização comprovada por validação Leave-One-Subject-Out (LOSO) e uma estratégia de Data Augmentation que simula variabilidades fisiológicas (como impedância da pele e ruído), o que garante um sistema independente de hardware e autocalibrável ao paciente através de uma plataforma integrada de coleta e processamento via microcontrolador.
 
-## 1. Pré-requisitos
+## Destaques e Contribuições
+- Zero-Hardware Dependency for Simulation: elimina necessidade de equipamentos complexos para a criação da base de dados;
+- Integrated Pipeline: integra coleta via microcontrolador, treinamento e aplicação em tempo real em um único ecossistema;
+- Automated Labeling and Segmentation: segmentação automática de padrões de movimento durante a coleta;
+- Sensor Agnostic Framework: modelo independente da escala do hardware;
+- Leave-One-Subject-Out (LOSO): Implementação de validação intersujeito (acurácia reflita a capacidade do modelo de generalizar para indivíduos nunca vistos durante o treinamento).
+
+## Pré-requisitos
 - Python 3.11.9: Certifique-se de ter esta versão instalada (disponível em [https://www.python.org/downloads/release/python-3119/](https://www.python.org/downloads/release/python-3119/)).
 - Hardware: Microcontrolador Raspberry Pi Pico 2W.
 OBS.: Irá aparecer uma mensagem destacada no link de instalação desta versão do python: ```Note: Python 3.11.9 has been superseded by Python 3.11.15```. Pode ignorar, já que a versão 3.11.9 é estável e seguira, cujo motivo de uso é a estabilidade. Instale a versão 3.11.9.
 
 
-## 2. Instalação de Dependências
+## Instalação de Dependências
 No terminal, instale as bibliotecas necessárias para o projeto:
 ```bash
 pip install pandas pyserial matplotlib numpy==1.26.4 tensorflow==2.19.1 joblib scikit-learn scipy seaborn statsmodels jupyter ipykernel
 ```
 
-## 3. Execução do Projeto
+## Execução do Projeto
 A execução do projeto é feita em etapas. Primeiro, deve-se programar o Raspberry Pi Pico 2W para enviar dados da leitura do sensor por meio da comunicação SERIAL por meio do modelo de configura;áo disponibilizado em 0_RASPBERRY.py.
 
 Após isso, deve-se executar 1_DADOS.py, o qual reconhecerá automaticamente a porta COM pela qual o microcontrolador está conectada e iniciará a leitura do sinal, ao passo que a gravação é feita clicando em "GRAVAR" e "PARAR" o registro, considerando que é responsabilidade do usuário deste software editar o valor numérico dentro da caixa de texto, que indica o ID do paciente que está usando o equipamento de eletromiografia para validação LOSO (Leave One Subject Off, ou Deixe Um Sujeito Fora - verifica a capacidade do modelo em generalizar para novas pessoas que ele nunca viu durante o treinamento). Por fim, clica-se em "SALVAR CSV" para salvar os dados gravados em um arquivo de CSV. Perceba que surgirá um arquivo 1_DADOS.csv, que constitui um arquivo Comma-Separated Values (Valores Separados por Vírgula) com os dados de gravação (perceba que é um arquivo colossal, visto que a taxa de amostragem maiores ou iguais a 1kHz produzem 1000 pontos de gravação por segundo - salvos atrasos na comunicação e leitura da porta serial da interface deste código python e o envio pelo próprio microcontrolador, ficando entre 830Hz -, ou seja, matematicamente ele vai gerar muitos dados, portanto não invente de abrir o arquivo no editor de código ou aplicativos de planilhas, pois o computador irá travar.

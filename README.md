@@ -1,9 +1,6 @@
 # EMG-PHANTOM PROJECT
 Software de Inteligência Artificial de Redes Neurais Artificiais do tipo CNN-LSTM para classificação de sinais de superfície de eletromiografia por meio de aprendizado semi-supervisionado por Laplace-Gaussian Mixture Models (LGMM).
 
-# Como Executar o Projeto
-Siga os passos abaixo para configurar o ambiente e processar os sinais de EMG.
-
 ## 1. Pré-requisitos
 - Python 3.11.9: Certifique-se de ter esta versão instalada (disponível em [https://www.python.org/downloads/release/python-3119/](https://www.python.org/downloads/release/python-3119/)).
 - Hardware: Microcontrolador Raspberry Pi Pico 2W.
@@ -92,7 +89,7 @@ def load_tflite(model_path):
     return predict_function
 ```
 
-# Termos de Uso e Atribuição
+## Termos de Uso e Atribuição
 **Este projeto está sob a licença Apache 2.0. É obrigatório incluir o nome do autor original (Gabriel Hideaki Miura) nos seguintes campos:**
 - **Lista de Referências:** Miura, G. H. (2026). Sistema de Classificação de Sinais de Eletromiografia utilizando Técnicas de Machine Learning (Version 1.0.0) [Computer software]. Mogi das Cruzes: ETEC Presidente Vargas, 2026. Circulação Restrita. Licenca Apache 2.0.
 - **Corpo do texto:** "Para o processamento de dados e tomada de decisão, utilizou-se a arquitetura de Inteligência Artificial desenvolvida por MIURA (2026), licenciada sob Apache 2.0, que integra o núcleo tecnológico deste projeto."

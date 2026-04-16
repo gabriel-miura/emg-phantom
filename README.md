@@ -1,7 +1,4 @@
 # Classificação de Sinais de Eletromiografia de Superfície via Arquitetura Híbrida CNN-LSTM e Aprendizado Semi-Supervisionado Baseado em LGMM
-Software de Inteligência Artificial de Redes Neurais Artificiais do tipo CNN-LSTM para classificação de sinais de superfície de eletromiografia por meio de aprendizado semi-supervisionado por Laplace-Gaussian Mixture Models (LGMM). O framework destaca-se pela alta capacidade de generalização comprovada por validação Leave-One-Subject-Out (LOSO) e uma estratégia de Data Augmentation que simula variabilidades fisiológicas (como impedância da pele e ruído), o que garante um sistema independente de hardware e autocalibrável ao paciente através de uma plataforma integrada de coleta e processamento via microcontrolador.
-
-## Destaques e Contribuições
 - Zero-Hardware Dependency for Simulation: elimina necessidade de equipamentos complexos para a criação da base de dados;
 - Integrated Pipeline: integra coleta via microcontrolador, treinamento e aplicação em tempo real em um único ecossistema;
 - Automated Labeling and Segmentation: segmentação automática de padrões de movimento durante a coleta;
@@ -13,8 +10,8 @@ Software de Inteligência Artificial de Redes Neurais Artificiais do tipo CNN-LS
 - Hardware: Microcontrolador Raspberry Pi Pico 2W.
 OBS.: Irá aparecer uma mensagem destacada no link de instalação desta versão do python: ```Note: Python 3.11.9 has been superseded by Python 3.11.15```. Pode ignorar, já que a versão 3.11.9 é estável e seguira, cujo motivo de uso é a estabilidade. Instale a versão 3.11.9.
 
-
 ## Instalação de Dependências
+
 No terminal, instale as bibliotecas necessárias para o projeto:
 ```bash
 pip install pandas pyserial matplotlib numpy==1.26.4 tensorflow==2.19.1 joblib scikit-learn scipy seaborn statsmodels jupyter ipykernel

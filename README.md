@@ -41,7 +41,7 @@ lgmm = GaussianMixture(
 )
 ```
 
-A segunda parte do 2_TREINO.ipynb consiste no treinamento do algoritmo de inferência acerca do sinal, portanto o Treinamento Supervisionado pelo Clusterign do algoritmo de LGMM. O tipo de Rede Neural Artificial utilizada encontra-se em uma subcategoria expecializada de Deep Learning (Aprendizado Profundo): DEEP LEARNING > UMA REDE CONVULOCIONAL JUNTO DE UM TIPO DE REDE RECURSIVA, A LONG-SHORT TERM MEMORY. Esta etapa condiciona, treina, otimiza e, por fim, salva o modelo CNN-LSTM em um arquivo 2_MODELO.tflite.
+A segunda parte do 2_TREINO.py consiste no treinamento do algoritmo de inferência acerca do sinal, portanto o Treinamento Supervisionado pelo Clusterign do algoritmo de LGMM. O tipo de Rede Neural Artificial utilizada encontra-se em uma subcategoria expecializada de Deep Learning (Aprendizado Profundo): DEEP LEARNING > UMA REDE CONVULOCIONAL JUNTO DE UM TIPO DE REDE RECURSIVA, A LONG-SHORT TERM MEMORY. Esta etapa condiciona, treina, otimiza e, por fim, salva o modelo CNN-LSTM em um arquivo 2_MODELO.tflite.
 ```python
 # ARQUITETURA DO MODELO CNN-LSTM PARA EXTRAÇÃO DE CARACTERÍSTICAS E PROCESSAMENTO DO SINAL EMG + CONFIGURAÇÃO DE OTIMIZAÇÃO (COMPILE)
 def build_model(input_length, n_classes):

@@ -1,20 +1,21 @@
-# Classificação de Sinais de Eletromiografia de Superfície via Arquitetura Híbrida CNN-LSTM e Aprendizado Semi-Supervisionado Baseado em LGMM
+# Rede Neural para Processamento de Sinais EMG
 - Zero-Hardware Dependency for Simulation: elimina necessidade de equipamentos complexos para a criação da base de dados;
 - Integrated Pipeline: integra coleta via microcontrolador, treinamento e aplicação em tempo real em um único ecossistema;
 - Automated Labeling and Segmentation: segmentação automática de padrões de movimento durante a coleta;
 - Sensor Agnostic Framework: modelo independente da escala do hardware;
 - Leave-One-Subject-Out (LOSO): Implementação de validação intersujeito (acurácia reflita a capacidade do modelo de generalizar para indivíduos nunca vistos durante o treinamento).
 
+
 ## Pré-requisitos
 - Python 3.11.9: Certifique-se de ter esta versão instalada (disponível em [https://www.python.org/downloads/release/python-3119/](https://www.python.org/downloads/release/python-3119/)).
 - Hardware: Microcontrolador Raspberry Pi Pico 2W.
 OBS.: Irá aparecer uma mensagem destacada no link de instalação desta versão do python: ```Note: Python 3.11.9 has been superseded by Python 3.11.15```. Pode ignorar, já que a versão 3.11.9 é estável e seguira, cujo motivo de uso é a estabilidade. Instale a versão 3.11.9.
 
-## Instalação de Dependências
 
+## Instalação de Dependências
 No terminal, instale as bibliotecas necessárias para o projeto:
 ```bash
-pip install pandas pyserial matplotlib numpy==1.26.4 tensorflow==2.19.1 joblib scikit-learn scipy seaborn statsmodels jupyter ipykernel
+pip install pandas pyserial matplotlib numpy==1.26.4 tensorflow==2.19.1 joblib scikit-learn scipy seaborn statsmodels
 ```
 
 ## Execução do Projeto
@@ -23,11 +24,11 @@ A execução do projeto é feita em etapas. Primeiro, deve-se programar o Raspbe
 Após isso, deve-se executar 1_DADOS.py, o qual reconhecerá automaticamente a porta COM pela qual o microcontrolador está conectada e iniciará a leitura do sinal, ao passo que a gravação é feita clicando em "GRAVAR" e "PARAR" o registro, considerando que é responsabilidade do usuário deste software editar o valor numérico dentro da caixa de texto, que indica o ID do paciente que está usando o equipamento de eletromiografia para validação LOSO (Leave One Subject Off, ou Deixe Um Sujeito Fora - verifica a capacidade do modelo em generalizar para novas pessoas que ele nunca viu durante o treinamento). Por fim, clica-se em "SALVAR CSV" para salvar os dados gravados em um arquivo de CSV. Perceba que surgirá um arquivo 1_DADOS.csv, que constitui um arquivo Comma-Separated Values (Valores Separados por Vírgula) com os dados de gravação (perceba que é um arquivo colossal, visto que a taxa de amostragem maiores ou iguais a 1kHz produzem 1000 pontos de gravação por segundo - salvos atrasos na comunicação e leitura da porta serial da interface deste código python e o envio pelo próprio microcontrolador, ficando entre 830Hz -, ou seja, matematicamente ele vai gerar muitos dados, portanto não invente de abrir o arquivo no editor de código ou aplicativos de planilhas, pois o computador irá travar.
 OBS.: Deve-se clicar alternadamente entre "GRAVAR" e "PARAR" para efetuar a troca do equipamento entre diferentes pessoas para, futuramente, realizar a tal da validação LOSO.
 
-Terminada a etapa de dados, deve-se abrir o arquivo "2_TREINO.ipynb". Para o treinamento, optou-se por um Treinamento Sem-Supervisionado em duas etapas. A primeira etapa consiste em um Treinamento Não-Supervisionado para rotulação dos dados por meio de uma técnica de Clustering (Agrupamento) por meio do algoritmo Laplacian-Gaussian Mixture Models (LGMM) aplicada sobre "1_DADOS.csv" para agrupar sinais de assinaturas e topologias semelhantes (sinais de músculo relaxado e sinais de músculo contraído) em grupos denominados "CLUSTERS"; veja, o modelo vai treinar baseado nos dados de entrada (os sinais recortados de 124 pontos de toda a gravação de milhões de pontos de gravação) e retornar qual grupo ele pertence, não importa o significa do grupo, uma vez que nós quem determinaremos o que cada grupo significa para nós. 
-OBS.: arquivos .ipynb devem ser executados dentro de um ambiente de desenvolvimento Google Colab ou, como o nosso caso precisamos do modelo no computador e não na nuvem, Anaconda (pesado e mais chato de configurar) ou Notebook Jupyter no Visual Studio Code, necessidando apenas conectar o python instalado (3.11.9) com as bibliotecas já instaladas no campo "SELECT KERNEL" do VSCODE. O kernel é uma interface que conecta o código executado em blocos ao python instalado na máquina (para reduzir o tempo de modificações feitas sem precisar espera 5 minutos para carregar as bibliotecas e código não alterado, somente executando o que foi modificado e acessando os demais blocos de código já executados e armazenados na memória, coisa que o arquivo python puro não permite). 
+Terminada a etapa de dados, deve-se abrir o arquivo "2_TREINO.py". Para o treinamento, optou-se por um Treinamento Semi-Supervisionado em duas etapas. A primeira etapa consiste em um Treinamento Não-Supervisionado para rotulação dos dados por meio de uma técnica de Clustering (Agrupamento) por meio do algoritmo Gaussian Mixture Models (GMM) aplicada sobre "1_DADOS.csv" para agrupar sinais de assinaturas e topologias semelhantes (sinais de músculo relaxado e sinais de músculo contraído) em grupos denominados "CLUSTERS".
+OBS.: o modelo vai treinar baseado nos dados de entrada (os sinais recortados de 124 pontos de toda a gravação de milhões de pontos de gravação) e retornar qual grupo ele pertence, não importa o significa do grupo, uma vez que nós quem determinaremos o que cada grupo significa para nós. 
 ```python
-# LAPLACIAN-GAUSSIAN MIXTURE MODELS (LGMM)
-lgmm = GaussianMixture(
+# GAUSSIAN MIXTURE MODELS (GMM)
+gmm = GaussianMixture(
     n_components=N_CLUSTERS, 
     covariance_type='full', 
     tol=1e-4, 
@@ -92,3 +93,13 @@ def load_tflite(model_path):
         return output_data
     return predict_function
 ```
+
+
+## Referências
+- [Por que CNN para biomédica?](https://doi.org/10.1016/j.ymssp.2020.107398)
+- [Por que CNN-LSTM é melhor que CNN?](https://doi.org/10.3390/s16010115)
+- [Estado da arte CNN-LSTM](https://doi.org/10.1371/journal.pone.0206049)
+- [Estado da arte CNN-LSTM compacta](https://doi.org/10.1109/TBCAS.2022.3212265)
+- [Estado da arte semi-supervisionado, páginas 16 a 20](https://www.molgen.mpg.de/3659531/MITPress--SemiSupervised-Learning.pdf)
+- [Estado da arte GMM](https://doi.org/10.1109/ICIAFS.2010.5715672)
+- [Como melhorar dados EMG para treinamento?](https://doi.org/10.1145/3136755.3136817)

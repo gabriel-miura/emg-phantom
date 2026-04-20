@@ -94,12 +94,10 @@ def load_tflite(model_path):
     return predict_function
 ```
 
-
-## Referências
-- [Por que CNN para biomédica?](https://doi.org/10.1016/j.ymssp.2020.107398)
-- [Por que CNN-LSTM é melhor que CNN?](https://doi.org/10.3390/s16010115)
-- [Estado da arte CNN-LSTM](https://doi.org/10.1371/journal.pone.0206049)
-- [Estado da arte CNN-LSTM compacta](https://doi.org/10.1109/TBCAS.2022.3212265)
-- [Estado da arte semi-supervisionado, páginas 16 a 20](https://www.molgen.mpg.de/3659531/MITPress--SemiSupervised-Learning.pdf)
-- [Estado da arte GMM](https://doi.org/10.1109/ICIAFS.2010.5715672)
-- [Como melhorar dados EMG para treinamento?](https://doi.org/10.1145/3136755.3136817)
+## REFERÊNCIAS (SÓ LEIA OS TÓPICOS ENTRE PARÊNTERES)
+- [O que é CNN?](https://doi.org/10.1016/j.ymssp.2020.107398) (```1. Introdução``` ```2.2. Redes neurais convolucionais unidimensionais```)
+- [Como melhorar treinamento?](https://dl.acm.org/doi/epdf/10.1145/3136755.3136817) (```3.2 Data Augmentation Methods for WearableSensor Data``` ```4 EXPERIMENTS```)
+- [Por que usar CNN-LSTM?](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10965693) (```I. INTRODUCTION``` ```II. RELATED WORK``` ```IV. EXPERIMENT```)
+- [Por que usar quantização 8-bit? LER** IV. EXPERIMENTAL RESULTS → D. Embedded Deployment Performance](https://doi.org/10.1109/TBCAS.2022.3212265) (```I. INTRODUCTION``` ```II. RELATED WORK``` ```IV. EXPERIMENT```) (DICA: TCN é parecida com CNN)
+- [O que é treinamento semi-supervisionado?](https://www.molgen.mpg.de/3659531/MITPress--SemiSupervised-Learning.pdf) (```1.1 Supervised, Unsupervised, and Semi-Supervised Learning``` ```1.2 When Can Semi-Supervised Learning Work?```)
+- [Por que usar GMM?](https://home.hiroshima-u.ac.jp/~furui/wp-content/uploads/2022/09/Furui2021-ts.pdf) (```1. Introduction``` ```3. Experiments``` ```4. Results```)

@@ -51,7 +51,8 @@ def sliding_window(data, labels, window_size, stride):
     
     X_windows = sliding_window_view(data, (window_size, data.shape[1]))[::stride].squeeze(axis=1)
     y_windows = sliding_window_view(labels, window_size)[::stride]
-    
+
+    # MOD3: revmover funcao suavizacao
     is_stable = np.all(y_windows == y_windows[:, [0]], axis=1)
     X_clean = X_windows[is_stable]
     y_clean = y_windows[is_stable, -1]

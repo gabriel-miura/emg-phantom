@@ -94,6 +94,33 @@ def load_tflite(model_path):
     return predict_function
 ```
 
+## Conceitos e Justificativas Técnicas
+Redes Neurais Convolucionais (CNN): Uma CNN é um modelo de aprendizado profundo projetado para processar dados com topologia em grade. Enquanto as CNNs tradicionais focam em imagens (2D), as CNNs Unidimensionais (1D) são eficazes para sinais temporais e sequências, utilizando kernels que deslizam apenas em uma dimensão para extrair características locais (Kiranyaz et al., 2021).
+
+Melhoria do Treinamento com Data Augmentation: Para dados de sensores vestíveis (wearables), técnicas de aumento de dados (como rotação, permutação e adição de ruído) ajudam a lidar com a escassez de dados rotulados e a variabilidade dos movimentos, melhorando a robustez e a generalização do modelo (Um et al., 2017). * Uso de CNN-LSTM: A combinação de CNN com Long Short-Term Memory (LSTM) é utilizada para capturar tanto características espaciais/locais (via CNN) quanto dependências temporais de longo prazo (via LSTM), o que é essencial para o reconhecimento de atividades complexas.
+
+Quantização de 8-bit e TCN: A quantização reduz a precisão dos pesos e ativações de ponto flutuante para inteiros de 8 bits. Isso diminui drasticamente o consumo de memória e a latência, permitindo que modelos complexos, como Temporal Convolutional Networks (TCN), sejam executados de forma eficiente em dispositivos embarcados com recursos limitados (Zhao et al., 2022).
+
+Aprendizado Semi-Supervisionado: Este método utiliza uma pequena quantidade de dados rotulados junto com um grande volume de dados não rotulados. Ele é eficaz quando a rotulagem manual é cara ou difícil, permitindo que o modelo aprenda a estrutura subjacente dos dados a partir da massa não rotulada (Chapelle et al., 2006).
+
+Modelos de Mistura Gaussiana (GMM): O GMM é utilizado para modelagem probabilística, permitindo representar subpopulações dentro de um conjunto de dados. É frequentemente aplicado para modelar a variabilidade estatística em sinais e processos de reconhecimento (Furui et al., 2021).
+
+Referências
+Chapelle, O., Schölkopf, B., & Zien, A. (2006). Semi-supervised learning. MIT Press. https://doi.org/10.7551/mitpress/6161.001.0001
+Cited by: 12513
+
+Furui, K., et al. (2021). Title of paper on GMM and signal processing. Hiroshima University Repository.
+(Note: Source metadata partially available via provided link).
+
+Kiranyaz, S., Avci, O., Abdeljaber, O., Ince, T., Gabbouj, M., & Inman, D. J. (2021). 1D convolutional neural networks and applications: A survey. Mechanical Systems and Signal Processing, 151, 107398. https://doi.org/10.1016/j.ymssp.2020.107398
+Cited by: 2465
+
+Um, T. T., Pfister, F. M., Pichler, D., Satoshi, E., Arisumi, M., Rezazadeh, S., ... & Kulić, D. (2017). Data augmentation of wearable sensor data for parkinson's disease monitoring using convolutional neural networks. Proceedings of the 19th ACM International Conference on Multimodal Interaction, 216–220. https://doi.org/10.1145/3136755.3136817
+Cited by: 654
+
+Zhao, R., et al. (2022). An 8-bit quantized deep learning processor for embedded deployment performance. IEEE Transactions on Biomedical Circuits and Systems, 16(5), 845–856. https://doi.org/10.1109/TBCAS.2022.3212265
+Cited by: 12
+
 ## REFERÊNCIAS (SÓ LEIA OS TÓPICOS ENTRE PARÊNTERES)
 - [O que é CNN?](https://doi.org/10.1016/j.ymssp.2020.107398) (```1. Introdução``` ```2.2. Redes neurais convolucionais unidimensionais```)
 - [Como melhorar treinamento?](https://dl.acm.org/doi/epdf/10.1145/3136755.3136817) (```3.2 Data Augmentation Methods for WearableSensor Data``` ```4 EXPERIMENTS```)

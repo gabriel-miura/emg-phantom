@@ -23,12 +23,22 @@ BATCH_SIZE = 64
 EPOCHS = 100
 
 def build_model(input_length, n_classes):
-    model = models.Sequential([ # 94.74%
+    # MODEL 1 # 94.74%
+    model = models.Sequential([
         layers.Input(shape=(WINDOW_SIZE, 1)), # sinal bruto
         layers.Conv1D(4, kernel_size=7, activation='relu', padding='same'), # extrair caracteristicas
         layers.BatchNormalization(), 
         layers.MaxPooling1D(pool_size=4), # "reduzir" a qtde de caracteristicas
         layers.SpatialDropout1D(0.3),
+        layers.LSTM(8),
+        layers.Dense(8, activation='relu'),
+        layers.Dense(N_CLUSTERS, activation='softmax')
+    ])
+    # MODEL 2 # 94.30%
+    model = models.Sequential([
+        layers.Input(shape=(WINDOW_SIZE, 1)),
+        layers.Conv1D(8, kernel_size=15, activation='relu', padding='same'),
+        layers.MaxPooling1D(pool_size=4), # "reduzir" a qtde de caracteristicas
         layers.LSTM(8),
         layers.Dense(8, activation='relu'),
         layers.Dense(N_CLUSTERS, activation='softmax')

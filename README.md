@@ -1,4 +1,4 @@
-# Rede Neural para Processamento de Sinais EMG
+# Rede Neural Artificial para Processamento de Biosinais
 - Zero-Hardware Dependency for Simulation: elimina necessidade de equipamentos complexos para a criação da base de dados;
 - Integrated Pipeline: integra coleta via microcontrolador, treinamento e aplicação em tempo real em um único ecossistema;
 - Automated Labeling and Segmentation: segmentação automática de padrões de movimento durante a coleta;

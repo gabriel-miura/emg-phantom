@@ -121,7 +121,7 @@ Cited by: 654
 Zhao, R., et al. (2022). An 8-bit quantized deep learning processor for embedded deployment performance. IEEE Transactions on Biomedical Circuits and Systems, 16(5), 845–856. https://doi.org/10.1109/TBCAS.2022.3212265
 Cited by: 12
 
-## REFERÊNCIAS (SÓ LEIA OS TÓPICOS ENTRE PARÊNTERES)
+## REFERÊNCIAS ESPECÍFICAS
 - [O que é CNN?](https://doi.org/10.1016/j.ymssp.2020.107398) (```1. Introdução``` ```2.2. Redes neurais convolucionais unidimensionais```)
 - [Como melhorar treinamento?](https://dl.acm.org/doi/epdf/10.1145/3136755.3136817) (```3.2 Data Augmentation Methods for WearableSensor Data``` ```4 EXPERIMENTS```)
 - [Por que usar CNN-LSTM?](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10965693) (```I. INTRODUCTION``` ```II. RELATED WORK``` ```IV. EXPERIMENT```)
